@@ -1,5 +1,7 @@
 # Asynchronous Web Server
 
+#### Contributor: Dumitrascu Filip-Teodor
+
 ## Objectives
 
 - Deepening the concepts related to working with sockets.
