@@ -23,7 +23,7 @@ The web server will use the multiplexing API to wait for connections from client
 On the established connections, requests from clients will be received and then responses will be distributed to them.
 
 
-The server will serve files from the `AWS_DOCUMENT_ROOT` directory, defined within the assignments' [header](./skel/aws.h).
+The server will serve files from the `AWS_DOCUMENT_ROOT` directory, defined within the assignments' [header](./src/aws.h).
 Files are only found in subdirectories `AWS_DOCUMENT_ROOT/static/` and `AWS_DOCUMENT_ROOT/dynamic/`.
 The corresponding request paths will be, for example, `AWS_DOCUMENT_ROOT/static/test.dat` and `AWS_DOCUMENT_ROOT/dynamic/test.dat`.
 The file processing will be:
@@ -37,8 +37,8 @@ After transmitting a file, according to the HTTP protocol, the connection is clo
 ### Details and recommendations for the implementation
 
 - Implementing the assignment requires having a state machine for each connection, which you periodically query and update as the transfer proceeds.
-Check the `connection_state` data structure defined in the [assignment header](./skel/awh.h).
-- Find the `connection` data structure defined in the [assignment header](./skel/awh.h).
+Check the `connection_state` data structure defined in the [assignment header](./src/aws.h).
+- Find the `connection` data structure defined in the [assignment header](./src/aws.h).
 This can be used to keep track of an open connection.
 - Definitions of other useful macros and data structures can be found in the assignment header.
 - HTTP responses will have the code `200` for existing files and `404` for not existing files.
@@ -55,9 +55,9 @@ This can be used to keep track of an open connection.
 ### HTTP Parser
 
 The clients and server will communicate using the HTTP protocol.
-For parsing HTTP requests from clients we recommend using [this HTTP parser](https://github.com/nodejs/http-parser), also available in the assignments' [http-parser](./skel/http-parser).
+For parsing HTTP requests from clients we recommend using [this HTTP parser](https://github.com/nodejs/http-parser), also available in the assignments' [http-parser](./src/http-parser).
 You will need to use a callback to get the path to the local resource requested by the client.
-Find a simplified example of using the parser in the [samples directory](./skel/http-parser/samples/).
+Find a simplified example of using the parser in the [samples directory](./src/http-parser/samples/).
 
 ## Resources
 
