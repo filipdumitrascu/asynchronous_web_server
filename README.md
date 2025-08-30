@@ -36,7 +36,7 @@ After transmitting a file, according to the HTTP protocol, the connection is clo
 
 ### Details and recommendations for the implementation
 
-- Implementing the assignment requires having a state machine for each connection, which you periodically query and update as the transfer proceeds.
+- Implementing the assignment requires having a state machine for each connection, which is periodically queried and updated as the transfer proceeds.
 Check the `connection_state` data structure defined in the [assignment header](./src/aws.h).
 - Find the `connection` data structure defined in the [assignment header](./src/aws.h).
 This can be used to keep track of an open connection.
@@ -44,7 +44,6 @@ This can be used to keep track of an open connection.
 - HTTP responses will have the code `200` for existing files and `404` for not existing files.
     - A valid response consists of the HTTP header, containing the related directives, two newlines (`\r\n\r\n`), followed by the actual content (the file).
     - Sample answers can be found in the parser test file or in the provided sample.
-    - You can use predefined request directives such as `Date`, `Last-Modified`, etc.
         - The `Content-Length` directive **must** specify the size of the HTTP content (actual data) in bytes.
         - The `Connection` directive **must** be initialized to `close`.
 - The port on which the web server listens for connections is defined within the assignment header: the `AWS_LISTEN_PORT` macro.
@@ -56,7 +55,7 @@ This can be used to keep track of an open connection.
 
 The clients and server will communicate using the HTTP protocol.
 For parsing HTTP requests from clients we recommend using [this HTTP parser](https://github.com/nodejs/http-parser), also available in the assignments' [http-parser](./src/http-parser).
-You will need to use a callback to get the path to the local resource requested by the client.
+A callback it is used to get the path to the local resource requested by the client.
 Find a simplified example of using the parser in the [samples directory](./src/http-parser/samples/).
 
 ## Resources
